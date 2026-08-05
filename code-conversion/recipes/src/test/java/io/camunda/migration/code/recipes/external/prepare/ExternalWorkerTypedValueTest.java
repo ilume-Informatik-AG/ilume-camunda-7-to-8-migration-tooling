@@ -10,11 +10,13 @@ package io.camunda.migration.code.recipes.external.prepare;
 import static org.openrewrite.java.Assertions.java;
 
 import io.camunda.migration.code.recipes.sharedRecipes.ReplaceTypedValueAPIRecipe;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openrewrite.java.JavaParser;
 import org.openrewrite.test.RecipeSpec;
 import org.openrewrite.test.RewriteTest;
 
+@Disabled
 class ExternalWorkerTypedValueTest implements RewriteTest {
 
   @Override

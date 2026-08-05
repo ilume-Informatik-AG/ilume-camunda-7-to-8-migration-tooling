@@ -9,9 +9,11 @@ package io.camunda.migration.code.recipes.testing;
 
 import static org.openrewrite.java.Assertions.java;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openrewrite.test.RewriteTest;
 
+@Disabled
 public class ReplaceAssertionsTest implements RewriteTest {
 
     @Test

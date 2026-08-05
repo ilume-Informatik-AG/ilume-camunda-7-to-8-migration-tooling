@@ -10,7 +10,15 @@
   </parent>
 
   <artifactId>camunda-7-to-8-code-conversion-recipes</artifactId>
-  <name>Camunda 7 to 8 Migration Tooling - Code - Recipes</name>
+  <name>ilume Camunda 7 to 8 Migration Tooling - Code - Recipes</name>
+
+  <distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>ilume-Informatik-AG</name>
+      <url>https://maven.pkg.github.com/JensBrauckhoff/camunda-7-to-8-code-conversion-parent</url>
+    </repository>
+  </distributionManagement>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -170,7 +178,7 @@
       <artifactId>camunda-spin-dataformat-all</artifactId>
       <version>${version.camunda-7}</version>
     </dependency>
-    <dependency>
+    <!--dependency>
       <groupId>org.camunda.bpm.springboot</groupId>
       <artifactId>camunda-bpm-spring-boot-starter-4-external-task-client</artifactId>
       <version>${version.camunda-7}</version>
@@ -179,7 +187,7 @@
       <groupId>org.camunda.bpm.springboot</groupId>
       <artifactId>camunda-bpm-spring-boot-starter-4-test</artifactId>
       <version>${version.camunda-7}</version>
-    </dependency>
+    </dependency-->
     <dependency>
       <groupId>io.camunda</groupId>
       <artifactId>zeebe-client-java</artifactId>

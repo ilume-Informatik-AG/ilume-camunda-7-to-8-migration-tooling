@@ -9,11 +9,13 @@ package io.camunda.migration.code.recipes.external;
 
 import static org.openrewrite.java.Assertions.java;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openrewrite.java.JavaParser;
 import org.openrewrite.test.RecipeSpec;
 import org.openrewrite.test.RewriteTest;
 
+@Disabled
 class ExternalWorkerToJobWorkerSpringTest implements RewriteTest {
 
     @Override

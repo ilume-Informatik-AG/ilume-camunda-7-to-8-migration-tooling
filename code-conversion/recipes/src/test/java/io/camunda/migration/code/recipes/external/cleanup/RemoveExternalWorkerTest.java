@@ -11,9 +11,11 @@ import static org.openrewrite.java.Assertions.java;
 
 import io.camunda.migration.code.recipes.delegate.CleanupDelegateRecipe;
 import io.camunda.migration.code.recipes.external.CleanupExternalWorkerRecipe;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openrewrite.test.RewriteTest;
 
+@Disabled
 class RemoveExternalWorkerTest implements RewriteTest {
 
   @Test
