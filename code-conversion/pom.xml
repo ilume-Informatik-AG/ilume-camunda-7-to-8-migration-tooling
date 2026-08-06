@@ -9,17 +9,10 @@
         <relativePath>../</relativePath>
     </parent>
 
+  <groupId>io.ilume</groupId>
   <artifactId>camunda-7-to-8-code-conversion-parent</artifactId>
   <packaging>pom</packaging>
   <name>ilume Camunda 7 to 8 Migration Tooling - Code</name>
-
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>ilume-Informatik-AG</name>
-            <url>https://maven.pkg.github.com/JensBrauckhoff/camunda-7-to-8-code-conversion-parent</url>
-        </repository>
-    </distributionManagement>
 
   <profiles>
     <profile>
@@ -29,9 +22,9 @@
       </activation>
       <modules>
         <module>recipes</module>
-        <module>patterns/code-examples/camunda-7</module>
+        <!--module>patterns/code-examples/camunda-7</module>
         <module>patterns/code-examples/camunda-8</module>
-        <module>examples/process-solution-camunda-7</module>
+        <module>examples/process-solution-camunda-7</module-->
       </modules>
     </profile>
 

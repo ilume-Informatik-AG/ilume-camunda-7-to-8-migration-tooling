@@ -61,9 +61,9 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
 
-    <nexus.snapshot.repository>https://maven.pkg.github.com/ilume-Informatik-AG/ilumeCamundaMigrationTools</nexus.snapshot.repository>
+    <nexus.snapshot.repository>https://maven.pkg.github.com/ilume-Informatik-AG/ilume-camunda-7-to-8-migration-tooling</nexus.snapshot.repository>
     <nexus.snapshot.repository.id>github</nexus.snapshot.repository.id>
-    <nexus.release.repository>https://maven.pkg.github.com/ilume-Informatik-AG/ilumeCamundaMigrationTools</nexus.release.repository>
+    <nexus.release.repository>https://maven.pkg.github.com/ilume-Informatik-AG/ilume-camunda-7-to-8-migration-tooling</nexus.release.repository>
     <nexus.release.repository.id>github</nexus.release.repository.id>
     <nexus.staging.deploy.id>github</nexus.staging.deploy.id>
     <central.sonatype.deployment.name>${project.groupId}:${project.artifactId}:${project.version}</central.sonatype.deployment.name>
@@ -85,19 +85,9 @@
 
   <repositories>
     <repository>
-      <id>zeebe-snapshots</id>
-      <snapshots />
-      <url>https://artifacts.camunda.com/artifactory/zeebe-io-snapshots/</url>
-    </repository>
-    <repository>
-      <id>camunda-bpm-snapshots</id>
-      <snapshots />
-      <url>https://artifacts.camunda.com/artifactory/camunda-bpm-snapshots/</url>
-    </repository>
-    <repository>
-      <id>camunda-bpm-ee-snapshots</id>
-      <snapshots />
-      <url>https://artifacts.camunda.com/artifactory/camunda-bpm-ee-snapshots/</url>
+      <id>github</id>
+      <name>ilume-Informatik-AG</name>
+      <url>https://maven.pkg.github.com/ilume-Informatik-AG/ilume-camunda-7-to-8-migration-tooling</url>
     </repository>
   </repositories>
 

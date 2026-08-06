@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>io.camunda</groupId>
+    <groupId>io.ilume</groupId>
     <artifactId>camunda-7-to-8-code-conversion-parent</artifactId>
     <version>0.3.5</version>
     <relativePath>../</relativePath>
@@ -11,14 +11,6 @@
 
   <artifactId>camunda-7-to-8-code-conversion-recipes</artifactId>
   <name>ilume Camunda 7 to 8 Migration Tooling - Code - Recipes</name>
-
-  <distributionManagement>
-    <repository>
-      <id>github</id>
-      <name>ilume-Informatik-AG</name>
-      <url>https://maven.pkg.github.com/JensBrauckhoff/camunda-7-to-8-code-conversion-parent</url>
-    </repository>
-  </distributionManagement>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
