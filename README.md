@@ -1,125 +1,60 @@
-# Camunda 7 to 8 Migration Tooling
+# ilume Camunda 7 to 8 Migration Tooling
 
-This repository contains a collection of tools to help you migrate from Camunda 7 to Camunda 8.
+This repository is a fork of the Camunda repository `camunda-7-to-8-migration-tooling`. It is intended to provide 
+the artifacts for the Java Code conversion tools using the OpenRewrite recipes without the need of having access to 
+the Camunda Enterprise Maven Repository. The OpenRewrite recipes to migrate the external tasks had to be removed 
+from the build to prevent the need for Camunda Enterprise artifacts.
 
-## CI Status
+This respository is intended for training purposes only! To migrate production code use the standard Camunda 
+migration tools.
 
-| Branch           | CI Status |
-|------------------|-----------|
-| **main**         | [![CI main](https://github.com/camunda/camunda-7-to-8-migration-tooling/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/camunda/camunda-7-to-8-migration-tooling/actions/workflows/ci.yml?query=branch%3Amain) |
-| **maintenance/0.1** | [![CI maintenance/0.1](https://github.com/camunda/camunda-7-to-8-migration-tooling/actions/workflows/ci.yml/badge.svg?branch=maintenance/0.1)](https://github.com/camunda/camunda-7-to-8-migration-tooling/actions/workflows/ci.yml?query=branch%3Amaintenance%2F0.1) |
-| **maintenance/0.2** | [![CI maintenance/0.2](https://github.com/camunda/camunda-7-to-8-migration-tooling/actions/workflows/ci.yml/badge.svg?branch=maintenance/0.2)](https://github.com/camunda/camunda-7-to-8-migration-tooling/actions/workflows/ci.yml?query=branch%3Amaintenance%2F0.2) |
+To get rid of the Camunda Enterprise artifacts, some POM files had to be modified and some unit tests have been 
+disabled (those for the External Tasks). The branches for those versions have the prefix `ilume`. The latest branch 
+is `ilume/0.3.5`. Those branches are always based on the tags with the according version.
 
-## Available Tools
-
-### [Data Migrator](./data-migrator/)
-A tool for migrating Camunda 7 process instances and related data to Camunda 8. This migrator helps organizations seamlessly transition their process instances while preserving execution state and variables ensuring minimal disruption to ongoing business processes.
-
-Please see the official documentation for more details: [Camunda 7 to 8 Migration Guide](https://docs.camunda.io/docs/next/guides/migrating-from-camunda-7/migration-tooling/data-migrator/).
-                                                                                         
-
-### [Diagram Converter](./diagram-converter/)
-A tool for analyzing and converting Camunda 7 models (BPMN & DMN) to Camunda 8 format. The Diagram Converter identifies migration tasks and automatically converts process models, with support for custom extensions to accommodate special requirements.
-
-For detailed information, see the [Diagram Converter README](./diagram-converter/README.md).
-
-### [Code Conversion](./code-conversion/)
-A comprehensive toolkit for converting Camunda 7 code to Camunda 8. This module provides:
-
-- **[Code Conversion Patterns](./code-conversion/patterns/)** - Best practices and patterns for migrating Java (Spring) client code and glue code
-- **[OpenRewrite Recipes](./code-conversion/recipes/)** - Automated refactoring recipes to streamline Java code migration
-- **[API Mapping WebApp](https://camunda.github.io/camunda-7-to-8-migration-tooling/)** - Interactive tool showing how Camunda 7 API endpoints map to Camunda 8
-
-For detailed information, see the [Code Conversion README](./code-conversion/README.md).
-
-### [AI Agent Skill](./agentic-migration-skills/)
-
-An [Agent Skill](https://agentskills.io/) that guides you through the full migration interactively — no copy-pasting prompts from docs. Works with any [Agent Skills](https://agentskills.io/)-compatible AI coding agent.
-
-**Install with Claude Code:**
-
-```bash
-claude plugin marketplace add camunda/camunda-7-to-8-migration-tooling
-claude plugin install camunda-migration
-```
-
-**Other agents** — the skill follows the [Agent Skills](https://agentskills.io/) open format and works with any compatible agent. See [agentic-migration-skills/README.md](./agentic-migration-skills/README.md) for manual installation.
-
-**Use** (from your project directory):
+This repo provides to GitHub Maven Packages with the according artifacts:
 
 ```
-/camunda-migration:migrate-c7-to-c8-code
+<dependency>
+  <groupId>io.ilume</groupId>
+  <artifactId>camunda-7-to-8-code-conversion-recipes</artifactId>
+  <version>0.3.5</version>
+</dependency>
+```
+and
+
+```
+<dependency>
+    <groupId>io.ilume</groupId>
+    <artifactId>camunda-7-to-8-code-conversion-recipes</artifactId>
+    <version>0.3.5</version>
+</dependency>
 ```
 
-The skill will ask for your project path and walk you through three options:
+One can see that the groupId has changed from `io.camunda` to `io.ilume`. The dependency of the `rewrite-maven-plugin` 
+has to be adoped accordingly.
 
-| Approach | What it does |
-|----------|-------------|
-| **OpenRewrite + AI** *(recommended)* | Runs OpenRewrite recipes for bulk transforms, then AI resolves TODOs, config, and test code |
-| **AI only** | AI migrates everything directly — for non-Maven/Gradle builds or when you want to review every change |
-| **Assessment only** | Scans the codebase and reports files, complexity, and effort estimate — no changes made |
+To use those artifacts, one needs to add the following repository entry to the POM file in which the OpenRewrite 
+Maven plugin is executed:
 
-The skill fetches the latest [pattern catalog](./code-conversion/patterns/ALL_IN_ONE.md) at runtime, so it always reflects current migration guidance.
-
-
-## Documentation
-
-- **[Camunda 7 to 8 Migration Guide](https://docs.camunda.io/docs/guides/migrating-from-camunda-7/)** - Official migration documentation
-- **[Data Migrator Documentation](./data-migrator/README.md)** - Detailed data migrator documentation
-- **[Diagram Converter Documentation](./diagram-converter/README.md)** - Model analysis and conversion tools
-- **[Code Conversion Documentation](./code-conversion/README.md)** - Code conversion patterns and tools
-- **[Camunda 8 Documentation](https://docs.camunda.io/)** - Official Camunda 8 documentation
-
-## Contributing
-
-We welcome contributions to the Camunda 7 to 8 Migration Tooling! Here's how you can help:
-
-### Ways to Contribute
-
-1. **Report bugs** - Create detailed issue reports
-2. **Suggest features** - Propose new functionality
-3. **Submit code** - Fix bugs or implement features
-4. **Improve documentation** - Help others understand the tool
-5. **Test and provide feedback** - Try the tool and share your experience
-
-See our [issue tracker](https://github.com/camunda/camunda-7-to-8-migration-tooling/issues/).
-
-### Before Contributing
-
-1. **Read the [Contributions Guide](https://github.com/camunda/camunda-bpm-platform/blob/master/CONTRIBUTING.md)**
-2. **Check existing issues** to avoid duplicates [link](https://github.com/camunda/camunda-7-to-8-migration-tooling/issues/)
-3. **Discuss major changes** in an issue before implementing
-
-### Development Guidelines
-
-- **Follow Java coding standards** and existing code style
-- **Write tests** for new functionality
-- **Update documentation** when adding features
-- **Use meaningful commit messages**
-- **Keep changes focused** - one feature/fix per pull request
-
-### License Headers
-
-Every source file must contain the license header. See [license header template](./license/header.txt) for the exact format required.
-
-### Pull Request Process
-
-1. Fork the repository
-2. Create a feature branch from `main`
-3. Make your changes with tests
-4. Ensure all tests pass
-5. Update documentation if needed
-6. Submit a pull request with a clear description
-
-## License
-
-The source files in this repository are made available under the [Camunda License Version 1.0](./CAMUNDA-LICENSE-1.0.txt).
-
----
-
-## Additional Resources
-
-- **[Camunda 8 Documentation](https://docs.camunda.io/)** - Official Camunda 8 documentation
-- **[Migration Analyzer & Diagram Converter](https://diagram-converter.camunda.io/)** - Tool for migrating BPMN models and analyzing migration effort
-- **[Community Forum](https://forum.camunda.io/)** - Get help from the community
-- **[GitHub Issues](https://github.com/camunda/camunda-7-to-8-migration-tooling/issues)** - Report bugs and request features in the issue tracker
+```
+  <pluginRepositories>
+    <pluginRepository>
+      <id>github</id>
+      <name>ilume-Informatik-AG</name>
+      <url>https://maven.pkg.github.com/ilume-Informatik-AG/ilume-camunda-7-to-8-migration-tooling</url>
+    </pluginRepository>
+  </pluginRepositories>
+```
+Additionally an entry has to be made to the Maven configuration file `settings.xml`:
+```
+</servers>
+  <server>
+    <id>github</id>
+    <username>USERNAME</username>
+    <password>ACCESS_TOKEN</password>
+  </server>
+</servers>
+```
+As the repository is public, it is sufficient to have any GitHub user create a classic accecss token with at least 
+the permission `read:package`. 
