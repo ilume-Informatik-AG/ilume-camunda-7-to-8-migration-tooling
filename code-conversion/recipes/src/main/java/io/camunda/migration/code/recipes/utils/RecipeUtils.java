@@ -10,6 +10,7 @@ package io.camunda.migration.code.recipes.utils;
 import java.util.*;
 import java.util.stream.Stream;
 import org.openrewrite.Cursor;
+import org.openrewrite.InMemoryExecutionContext;
 import org.openrewrite.Tree;
 import org.openrewrite.java.JavaParser;
 import org.openrewrite.java.JavaTemplate;
@@ -17,6 +18,15 @@ import org.openrewrite.java.tree.*;
 import org.openrewrite.marker.Markers;
 
 public class RecipeUtils {
+
+  private static final JavaParser.Builder<? extends JavaParser, ?> javaParserBuilder =
+          JavaParser.fromJavaVersion().classpathFromResources(new InMemoryExecutionContext(),
+                  "camunda-spring-boot-starter-8.9.13");
+
+  public static JavaParser.Builder<? extends JavaParser, ?> getJavaParser() {
+    return javaParserBuilder;
+  }
+
 
   public static J.Identifier createSimpleIdentifier(String simpleName, String javaType) {
     return new J.Identifier(
@@ -45,13 +55,13 @@ public class RecipeUtils {
 
   public static JavaTemplate createSimpleJavaTemplate(String code) {
     return JavaTemplate.builder(code)
-        .javaParser(JavaParser.fromJavaVersion().classpath(JavaParser.runtimeClasspath()))
+        .javaParser(getJavaParser())
         .build();
   }
 
   public static JavaTemplate createSimpleJavaTemplate(String code, String... imports) {
     return JavaTemplate.builder(code)
-        .javaParser(JavaParser.fromJavaVersion().classpath(JavaParser.runtimeClasspath()))
+        .javaParser(getJavaParser())
         .imports(imports)
         .build();
   }

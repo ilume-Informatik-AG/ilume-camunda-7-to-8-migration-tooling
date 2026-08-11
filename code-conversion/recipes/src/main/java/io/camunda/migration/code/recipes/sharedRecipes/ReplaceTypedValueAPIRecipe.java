@@ -19,6 +19,8 @@ import org.openrewrite.java.search.UsesMethod;
 import org.openrewrite.java.search.UsesType;
 import org.openrewrite.java.tree.*;
 
+import static io.camunda.migration.code.recipes.utils.RecipeUtils.getJavaParser;
+
 public class ReplaceTypedValueAPIRecipe extends Recipe {
 
   /** Instantiates a new instance. */
@@ -658,8 +660,7 @@ public class ReplaceTypedValueAPIRecipe extends Recipe {
 
                 JavaTemplate mapOfEntries =
                     JavaTemplate.builder(mapOfEntriesCode)
-                        .javaParser(
-                            JavaParser.fromJavaVersion().classpath(JavaParser.runtimeClasspath()))
+                        .javaParser(getJavaParser())
                         .imports("java.util.Map")
                         .build();
 

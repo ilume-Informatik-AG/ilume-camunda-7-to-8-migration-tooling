@@ -100,7 +100,7 @@ public class PrepareJobWorkerBeneathExternalWorkerRecipe extends Recipe {
                         + classDeclaration.getSimpleName().substring(1);
 
                 maybeAddImport("io.camunda.client.annotation.JobWorker");
-                maybeAddImport("io.camunda.client.api.response.ActivatedJob");
+                maybeAddImport("io.camunda.client.api.response.ActivatedJob", false);
 
                 // Insert the new field at the bottom of the class body
                 return RecipeUtils.createSimpleJavaTemplate(

@@ -57,7 +57,7 @@ public class PrepareJobWorkerBeneathExecutionListenerRecipe extends Recipe {
                         + classDecl.getSimpleName().substring(1);
 
                 maybeAddImport("io.camunda.client.annotation.JobWorker");
-                maybeAddImport("io.camunda.client.api.response.ActivatedJob");
+                maybeAddImport("io.camunda.client.api.response.ActivatedJob", false);
                 maybeAddImport("java.util.Map");
                 maybeAddImport("java.util.HashMap");
 
