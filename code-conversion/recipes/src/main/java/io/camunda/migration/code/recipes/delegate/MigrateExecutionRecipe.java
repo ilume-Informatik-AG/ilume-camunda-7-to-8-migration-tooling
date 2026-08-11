@@ -64,9 +64,7 @@ public class MigrateExecutionRecipe extends Recipe {
 
       // define preconditions
       TreeVisitor<?, ExecutionContext> check =
-          Preconditions.and(
-              new UsesType<>("io.camunda.client.annotation.JobWorker", true),
-              new UsesType<>("org.camunda.bpm.engine.delegate.JavaDelegate", true));
+              new UsesType<>("org.camunda.bpm.engine.delegate.JavaDelegate", true);
 
       return Preconditions.check(
           check,
@@ -149,7 +147,6 @@ public class MigrateExecutionRecipe extends Recipe {
 
       TreeVisitor<?, ExecutionContext> precondition =
           Preconditions.and(
-              new UsesType<>("io.camunda.client.annotation.JobWorker", true),
               new UsesType<>("org.camunda.bpm.engine.delegate.ExecutionListener", true));
 
       return Preconditions.check(
@@ -221,11 +218,9 @@ public class MigrateExecutionRecipe extends Recipe {
 
     @Override
     protected TreeVisitor<?, ExecutionContext> preconditions() {
-      return Preconditions.and(
-          new UsesType<>("io.camunda.client.annotation.JobWorker", true),
-          Preconditions.or(
+      return Preconditions.or(
               new UsesType<>("org.camunda.bpm.engine.delegate.JavaDelegate", true),
-              new UsesType<>("org.camunda.bpm.engine.delegate.ExecutionListener", true)));
+              new UsesType<>("org.camunda.bpm.engine.delegate.ExecutionListener", true));
     }
 
     @Override
@@ -570,7 +565,6 @@ public class MigrateExecutionRecipe extends Recipe {
       // define preconditions
       TreeVisitor<?, ExecutionContext> check =
           Preconditions.and(
-              new UsesType<>("io.camunda.client.annotation.JobWorker", true),
               new UsesType<>("org.camunda.bpm.engine.delegate.JavaDelegate", true));
 
       return Preconditions.check(
